@@ -1,1 +1,1 @@
-# pre-entrega-01-jsvascrpit
+# pre-entrega-01-javascrpit
