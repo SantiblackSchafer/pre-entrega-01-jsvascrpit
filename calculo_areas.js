@@ -19,6 +19,9 @@ let radioCirculo = 3;
 let baseTriangulo = 4;
 let alturaTriangulo = 6;
 
+// Array para almacenar las áreas calculadas
+let areas = [];
+
 // Calculando áreas
 let areaCuadrado = calcularAreaCuadrado(ladoCuadrado);
 let areaCirculo = calcularAreaCirculo(radioCirculo);
