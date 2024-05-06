@@ -1,53 +1,89 @@
-/* Estilos globales */
-body {
-    font-family: Arial, sans-serif;
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    height: 100%;
 }
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
-h1 {
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
     text-align: center;
-    margin-bottom: 30px;
+    padding: 10px 0;
 }
-/* Estilos para los contenedores de cada forma */
-.shape-container {
-    background-color: #fff;
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.shape-container h2 {
+
+.forma {
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 20px;
+    max-width: 300px;
+}
+
+.input-container {
     margin-bottom: 10px;
+    text-align: left;
 }
-.shape-container label {
+
+label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
-.shape-container input[type="number"] {
+
+input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
+    border-radius: 5px;
 }
-.shape-container button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+
+button {
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
 }
-.shape-container button:hover {
-    background-color: #45a049;
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
-.shape-container p {
+
+p {
     margin-top: 10px;
-    font-weight: bold;
+    font-size: 16px;
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
