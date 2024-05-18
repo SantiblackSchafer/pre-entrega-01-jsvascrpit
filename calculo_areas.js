@@ -2,17 +2,17 @@
 const Formas = {
     cuadrado: {
         calcularArea: function(lado) {
-            return lado * lado;
+            return lado > 0 ? lado * lado : "Lado inválido";
         }
     },
     circulo: {
         calcularArea: function(radio) {
-            return Math.PI * radio ** 2;
+            return radio > 0 ? Math.PI * radio ** 2 : "Radio inválido";
         }
     },
     triangulo: {
         calcularArea: function(base, altura) {
-            return (base * altura) / 2;
+            return base > 0 && altura > 0 ? (base * altura) / 2 : "Base o altura inválida";
         }
     }
 };
@@ -25,16 +25,25 @@ const Datos = {
     alturaTriangulo: 6
 };
 
+// Función para calcular áreas de forma condicional
+const calcularAreaCondicional = (forma, ...valores) => {
+    const area = forma.calcularArea(...valores);
+    return typeof area === "number" ? area : area;
+};
+
 // Array para almacenar las áreas calculadas
 let areas = [];
 
+// Desestructuración de las variables de prueba
+const { ladoCuadrado, radioCirculo, baseTriangulo, alturaTriangulo } = Datos;
+
 // Calculando áreas
-let areaCuadrado = Formas.cuadrado.calcularArea(Datos.ladoCuadrado);
-let areaCirculo = Formas.circulo.calcularArea(Datos.radioCirculo);
-let areaTriangulo = Formas.triangulo.calcularArea(Datos.baseTriangulo, Datos.alturaTriangulo);
+let areaCuadrado = calcularAreaCondicional(Formas.cuadrado, ladoCuadrado);
+let areaCirculo = calcularAreaCondicional(Formas.circulo, radioCirculo);
+let areaTriangulo = calcularAreaCondicional(Formas.triangulo, baseTriangulo, alturaTriangulo);
 
 // Mostrando resultados
-console.log(`El área del cuadrado con lado ${Datos.ladoCuadrado} es: ${areaCuadrado}`);
-console.log(`El área del círculo con radio ${Datos.radioCirculo} es: ${areaCirculo.toFixed(2)}`);
-console.log(`El área del triángulo con base ${Datos.baseTriangulo} y altura ${Datos.alturaTriangulo} es: ${areaTriangulo}`);
+console.log(`El área del cuadrado con lado ${ladoCuadrado} es: ${areaCuadrado}`);
+console.log(`El área del círculo con radio ${radioCirculo} es: ${typeof areaCirculo === "number" ? areaCirculo.toFixed(2) : areaCirculo}`);
+console.log(`El área del triángulo con base ${baseTriangulo} y altura ${alturaTriangulo} es: ${areaTriangulo}`);
 
