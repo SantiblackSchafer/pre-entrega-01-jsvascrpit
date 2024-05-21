@@ -1,49 +1,59 @@
-// Objeto con métodos para calcular áreas
-const Formas = {
-    cuadrado: {
-        calcularArea: function(lado) {
-            return lado > 0 ? lado * lado : "Lado inválido";
-        }
-    },
-    circulo: {
-        calcularArea: function(radio) {
-            return radio > 0 ? Math.PI * radio ** 2 : "Radio inválido";
-        }
-    },
-    triangulo: {
-        calcularArea: function(base, altura) {
-            return base > 0 && altura > 0 ? (base * altura) / 2 : "Base o altura inválida";
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('lado').addEventListener('input', () => calcularArea('cuadrado'));
+    document.getElementById('radio').addEventListener('input', () => calcularArea('circulo'));
+    document.getElementById('base').addEventListener('input', () => calcularArea('triangulo'));
+    document.getElementById('altura').addEventListener('input', () => calcularArea('triangulo'));
+
+    cargarDatos();
+});
+
+function calcularArea(forma) {
+    let area = 0;
+
+    if (forma === 'cuadrado') {
+        const lado = document.getElementById('lado').value;
+        area = lado ? lado * lado : 0;
+        document.getElementById('resultadoCuadrado').textContent = lado ? `Área del cuadrado: ${area} unidades cuadradas` : '';
+        localStorage.setItem('lado', lado);
+    } else if (forma === 'circulo') {
+        const radio = document.getElementById('radio').value;
+        area = radio ? Math.PI * radio * radio : 0;
+        document.getElementById('resultadoCirculo').textContent = radio ? `Área del círculo: ${area.toFixed(2)} unidades cuadradas` : '';
+        localStorage.setItem('radio', radio);
+    } else if (forma === 'triangulo') {
+        const base = document.getElementById('base').value;
+        const altura = document.getElementById('altura').value;
+        area = (base && altura) ? (base * altura) / 2 : 0;
+        document.getElementById('resultadoTriangulo').textContent = (base && altura) ? `Área del triángulo: ${area} unidades cuadradas` : '';
+        localStorage.setItem('base', base);
+        localStorage.setItem('altura', altura);
     }
-};
+}
 
-// Objeto con las variables de prueba
-const Datos = {
-    ladoCuadrado: 5,
-    radioCirculo: 3,
-    baseTriangulo: 4,
-    alturaTriangulo: 6
-};
+function cargarDatos() {
+    const lado = localStorage.getItem('lado');
+    const radio = localStorage.getItem('radio');
+    const base = localStorage.getItem('base');
+    const altura = localStorage.getItem('altura');
 
-// Función para calcular áreas de forma condicional
-const calcularAreaCondicional = (forma, ...valores) => {
-    const area = forma.calcularArea(...valores);
-    return typeof area === "number" ? area : area;
-};
+    if (lado) {
+        document.getElementById('lado').value = lado;
+        calcularArea('cuadrado');
+    }
 
-// Array para almacenar las áreas calculadas
-let areas = [];
+    if (radio) {
+        document.getElementById('radio').value = radio;
+        calcularArea('circulo');
+    }
 
-// Desestructuración de las variables de prueba
-const { ladoCuadrado, radioCirculo, baseTriangulo, alturaTriangulo } = Datos;
+    if (base) {
+        document.getElementById('base').value = base;
+        calcularArea('triangulo');
+    }
 
-// Calculando áreas
-let areaCuadrado = calcularAreaCondicional(Formas.cuadrado, ladoCuadrado);
-let areaCirculo = calcularAreaCondicional(Formas.circulo, radioCirculo);
-let areaTriangulo = calcularAreaCondicional(Formas.triangulo, baseTriangulo, alturaTriangulo);
-
-// Mostrando resultados
-console.log(`El área del cuadrado con lado ${ladoCuadrado} es: ${areaCuadrado}`);
-console.log(`El área del círculo con radio ${radioCirculo} es: ${typeof areaCirculo === "number" ? areaCirculo.toFixed(2) : areaCirculo}`);
-console.log(`El área del triángulo con base ${baseTriangulo} y altura ${alturaTriangulo} es: ${areaTriangulo}`);
+    if (altura) {
+        document.getElementById('altura').value = altura;
+        calcularArea('triangulo');
+    }
+}
 

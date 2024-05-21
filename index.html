@@ -1,53 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Áreas</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Calculadora de Áreas</h1>
-        </header>
-        <main>
-            <section class="forma">
-                <h2>Cuadrado</h2>
-                <div class="input-container">
-                    <label for="lado">Lado:</label>
-                    <input type="number" id="lado" placeholder="Ingrese el lado">
-                </div>
-                <button onclick="calcularAreaCuadrado()">Calcular área</button>
-                <p id="resultadoCuadrado"></p>
-            </section>
-            <section class="forma">
-                <h2>Círculo</h2>
-                <div class="input-container">
-                    <label for="radio">Radio:</label>
-                    <input type="number" id="radio" placeholder="Ingrese el Radio">
-                </div>
-                <button onclick="calcularAreaCirculo()">Calcular área</button>
-                <p id="resultadoCirculo"></p>
-            </section>
-            <section class="forma">
-                <h2>Triángulo</h2>
-                <div class="input-container">
-                    <label for="base">Base:</label>
-                    <input type="number" id="base" placeholder="Ingrese la base">
-                </div>
-                <div class="input-container">
-                    <label for="altura">Altura:</label>
-                    <input type="number" id="altura" placeholder="Ingrese la altura">
-                </div>
-                <button onclick="calcularAreaTriangulo()">Calcular área</button>
-                <p id="resultadoTriangulo"></p>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Calculadora de Áreas</p>
-        </footer>
-    </div>
-    <script src="calculo_areas.js" defer></script>
-</body>
-</html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora de Áreas</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Calculadora de Áreas</h1>
+            </header>
+            <main>
+                <section class="forma">
+                    <h2>Cuadrado</h2>
+                    <div class="input-container">
+                        <label for="lado">Lado:</label>
+                        <input type="number" id="lado" placeholder="Ingrese el lado" min="0">
+                    </div>
+                    <p id="resultadoCuadrado"></p>
+                </section>
+                <section class="forma">
+                    <h2>Círculo</h2>
+                    <div class="input-container">
+                        <label for="radio">Radio:</label>
+                        <input type="number" id="radio" placeholder="Ingrese el radio" min="0">
+                    </div>
+                    <p id="resultadoCirculo"></p>
+                </section>
+                <section class="forma">
+                    <h2>Triángulo</h2>
+                    <div class="input-container">
+                        <label for="base">Base:</label>
+                        <input type="number" id="base" placeholder="Ingrese la base" min="0">
+                    </div>
+                    <div class="input-container">
+                        <label for="altura">Altura:</label>
+                        <input type="number" id="altura" placeholder="Ingrese la altura" min="0">
+                    </div>
+                    <p id="resultadoTriangulo"></p>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2024 Calculadora de Áreas</p>
+            </footer>
+        </div>
+        <script src="calculo_areas.js" defer></script>
+    </body>
+    </html>
+
