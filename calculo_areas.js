@@ -1,28 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
+    cargarDatosDesdeJSON();
+    cargarDatos();
+    agregarEventListeners();
+});
+
+function cargarDatosDesdeJSON() {
+    fetch('datos.json')
+        .then(response => response.json())
+        .then(data => {
+            if (data.cuadrado) {
+                document.getElementById('lado').value = data.cuadrado.lado;
+                calcularArea('cuadrado');
+            }
+            if (data.circulo) {
+                document.getElementById('radio').value = data.circulo.radio;
+                calcularArea('circulo');
+            }
+            if (data.triangulo) {
+                document.getElementById('base').value = data.triangulo.base;
+                document.getElementById('altura').value = data.triangulo.altura;
+                calcularArea('triangulo');
+            }
+        })
+        .catch(error => console.error('Error al cargar los datos:', error));
+}
+
+function agregarEventListeners() {
     document.getElementById('lado').addEventListener('input', () => calcularArea('cuadrado'));
     document.getElementById('radio').addEventListener('input', () => calcularArea('circulo'));
     document.getElementById('base').addEventListener('input', () => calcularArea('triangulo'));
     document.getElementById('altura').addEventListener('input', () => calcularArea('triangulo'));
-
-    cargarDatos();
-});
+}
 
 function calcularArea(forma) {
     let area = 0;
 
     if (forma === 'cuadrado') {
-        const lado = document.getElementById('lado').value;
+        const lado = parseFloat(document.getElementById('lado').value);
         area = lado ? lado * lado : 0;
         document.getElementById('resultadoCuadrado').textContent = lado ? `Área del cuadrado: ${area} unidades cuadradas` : '';
         localStorage.setItem('lado', lado);
     } else if (forma === 'circulo') {
-        const radio = document.getElementById('radio').value;
+        const radio = parseFloat(document.getElementById('radio').value);
         area = radio ? Math.PI * radio * radio : 0;
         document.getElementById('resultadoCirculo').textContent = radio ? `Área del círculo: ${area.toFixed(2)} unidades cuadradas` : '';
         localStorage.setItem('radio', radio);
     } else if (forma === 'triangulo') {
-        const base = document.getElementById('base').value;
-        const altura = document.getElementById('altura').value;
+        const base = parseFloat(document.getElementById('base').value);
+        const altura = parseFloat(document.getElementById('altura').value);
         area = (base && altura) ? (base * altura) / 2 : 0;
         document.getElementById('resultadoTriangulo').textContent = (base && altura) ? `Área del triángulo: ${area} unidades cuadradas` : '';
         localStorage.setItem('base', base);
@@ -56,4 +81,5 @@ function cargarDatos() {
         calcularArea('triangulo');
     }
 }
+
 
