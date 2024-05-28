@@ -8,17 +8,17 @@ function cargarDatosDesdeJSON() {
     fetch('datos.json')
         .then(response => response.json())
         .then(data => {
-            if (data.cuadrado) {
-                document.getElementById('lado').value = data.cuadrado.lado;
+            if (_.has(data, 'cuadrado.lado')) {
+                document.getElementById('lado').value = _.get(data, 'cuadrado.lado');
                 calcularArea('cuadrado');
             }
-            if (data.circulo) {
-                document.getElementById('radio').value = data.circulo.radio;
+            if (_.has(data, 'circulo.radio')) {
+                document.getElementById('radio').value = _.get(data, 'circulo.radio');
                 calcularArea('circulo');
             }
-            if (data.triangulo) {
-                document.getElementById('base').value = data.triangulo.base;
-                document.getElementById('altura').value = data.triangulo.altura;
+            if (_.has(data, 'triangulo.base') && _.has(data, 'triangulo.altura')) {
+                document.getElementById('base').value = _.get(data, 'triangulo.base');
+                document.getElementById('altura').value = _.get(data, 'triangulo.altura');
                 calcularArea('triangulo');
             }
         })
@@ -81,5 +81,6 @@ function cargarDatos() {
         calcularArea('triangulo');
     }
 }
+
 
 
