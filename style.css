@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #222;
@@ -22,7 +21,8 @@ header, footer {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    position: center;
+    position: absolute;
+    left: 0;
 }
 
 header {
@@ -70,7 +70,7 @@ label {
 }
 
 input {
-    width: calc(100% - 20px);
+    width: calc(100% - 16px);
     padding: 8px;
     margin-bottom: 10px;
     border: none;
