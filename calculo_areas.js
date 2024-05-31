@@ -71,12 +71,8 @@ function cargarDatos() {
         calcularArea('circulo');
     }
 
-    if (base) {
+    if (base && altura) {
         document.getElementById('base').value = base;
-        calcularArea('triangulo');
-    }
-
-    if (altura) {
         document.getElementById('altura').value = altura;
         calcularArea('triangulo');
     }
